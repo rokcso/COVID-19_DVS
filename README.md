@@ -4,7 +4,9 @@
 
 技术栈：
 
-1. 前端：HTML/JavaScript/CSS
-2. 后端：Python --> Flask
-3. 数据：Python
-4. 可视化：ECharts.js
+- 前端：HTML/JavaScript/CSS
+- 后端：Python --> Flask
+- 数据爬取：Python
+- 可视化：ECharts.js
+- 数据管理：MySQL
+- 服务部署：云服务器（Linux 内核 / Ubuntu Server）
