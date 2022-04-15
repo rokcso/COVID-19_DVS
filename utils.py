@@ -2,7 +2,6 @@
 
 import time
 import pymysql
-from flask import jsonify
 
 def get_local_time():
     """

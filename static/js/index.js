@@ -37,7 +37,7 @@ function getMiddle2Data() {
         type: "POST",
         timeout: "10000",
         success:function(data) {
-            // console.log(data);
+            console.log(data);
             option.series[0].data = data.data;
             myChart.setOption(option)
         },

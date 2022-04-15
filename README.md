@@ -10,3 +10,11 @@
 - 可视化：ECharts.js
 - 数据管理：MySQL
 - 服务部署：云服务器（Linux 内核 / Ubuntu Server）
+
+### 引用
+
+- 全国省市区县乡村名称和编码 geoJson 数据
+  - https://github.com/TangSY/echarts-map-demo
+  - https://hxkj.vip/demo/echartsMap/
+- 高德地图开放平台
+  - https://lbs.amap.com/
