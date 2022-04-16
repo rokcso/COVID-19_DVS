@@ -26,7 +26,7 @@ function getMiddleNum() {
             $(".middle1_num").eq(4).html(data["total_dead"])
         },
         error:function(){
-            alert("API /get_middle_num error!")
+            console.log("API /get_middle_num error!")
         }
     })
 }
@@ -42,7 +42,7 @@ function getMiddle2Data() {
             myChart.setOption(option)
         },
         error:function() {
-            alert("API /get_middle2_data error!")
+            console.log("API /get_middle2_data error!")
         }
     })
 }
@@ -56,7 +56,7 @@ function getDataUpdateTime() {
             $("#time").html(data)
         },
         error:function() {
-            alert("API /get_data_update_time error!")
+            console.log("API /get_data_update_time error!")
         }
     })
 }

@@ -1,15 +1,7 @@
 # 自定义工具组件类
 
-import time
 import pymysql
-
-def get_local_time():
-    """
-    获取当前时间并拼装成字符串返回
-    :return: 返回时间字符串
-    """
-    time_str = time.strftime('%Y {} %m {} %d {} %X')
-    return time_str.format('年', '月', '日')
+import datetime
 
 def mysql_conn():
     """
@@ -49,8 +41,12 @@ def get_data_update_time():
     :return: data_update_time
     """
     sql = "select update_time from details order by id desc limit 1"
-    data_update_time = mysql_query(sql)
-    return str(data_update_time[0][0])
+    data_update_time = mysql_query(sql)[0][0]
+    gap = (datetime.datetime.now() - data_update_time).seconds
+    m_m, s = divmod(gap, 60)
+    h, m = divmod(m_m, 60)
+    res = ' Data updated in ' + str(data_update_time)[0:-3] + ' (' + str(h) + 'h' + str(m) + 'm ago)'
+    return res
 
 def get_middle_num():
     """
@@ -74,5 +70,12 @@ def get_middle2_data():
         res.append({'name': item[0], 'value': item[1]})
     return {'data': res}
 
+def get_left1_data():
+    """
+
+    :return:
+    """
+    sql = "select "
+
 if __name__ == '__main__':
-    print(get_middle2_data())
+    print(get_data_update_time())

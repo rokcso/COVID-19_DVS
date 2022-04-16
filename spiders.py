@@ -64,13 +64,13 @@ def up_details2mysql():
         cursor.execute(sql_new_time, details[0][0])
         # res = cursor.fetchall()
         if not cursor.fetchone()[0]:
-            print(f'{time.asctime()} 开始更新 details 数据')
+            print(f'{time.asctime()} --> 开始更新 details 数据')
             for item in details:
                 cursor.execute(sql, item)
             conn.commit()
-            print(f'{time.asctime()} details 数据更新完毕')
+            print(f'{time.asctime()} --> details 数据更新完毕')
         else:
-            print(f'{time.asctime()} details 数据已是最新')
+            print(f'{time.asctime()} --> details 数据已是最新')
     except:
         traceback.print_exc()
     finally:

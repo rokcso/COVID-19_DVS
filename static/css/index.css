@@ -1,4 +1,6 @@
-body {
+html, body {
+    height: 100%;
+    overflow: auto;
     margin: 0;
 }
 
@@ -8,7 +10,8 @@ body {
     height: 10%;
     top: 0;
     left: 30%;
-    font-size: 25px;
+    font-size: 26px;
+    font-weight: 700;
     display: flex; /* 弹性布局 */
     align-items: center; /* 水平居中 */
     justify-content: center; /* 垂直居中 */
@@ -17,25 +20,41 @@ body {
     border-style: solid;
 }
 
-#time {
+#info {
     position: absolute;
     width: 30%;
     height: 10%;
     top: 0;
     left: 70%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: end;
     font-family: 'Iosevka';
-    font-size: 20px;
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
+}
+
+#operator {
+    position: absolute;
+    width: 30%;
+    height: 10%;
+    top: 0;
+    left: 0;
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
 }
 
 #left1 {
     position: absolute;
     width: 30%;
-    height: 55%;
-    top: 0;
+    height: 45%;
+    top: 10%;
     left: 0;
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
 }
 
 #left2 {
@@ -44,12 +63,15 @@ body {
     height: 45%;
     top: 55%;
     left: 0;
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
 }
 
 #middle1 {
     position: absolute;
     width: 40%;
-    height: 25%;
+    height: 15%;
     top: 10%;
     left: 30%;
     border-width: 1px;
@@ -59,33 +81,36 @@ body {
 
 .middle1_num {
     width: 20%;
-    height: 60%;
+    height: 45%;
     float: left;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     font-family: 'Iosevka';
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 700;
 }
 
 .middle1_text {
     width: 20%;
-    height: 40%;
+    height: 55%;
     float: left;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
 }
 
 #middle2 {
     position: absolute;
     width: 40%;
-    height: 65%;
-    top: 35%;
+    height: 75%;
+    top: 25%;
     left: 30%;
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
 }
 
 #right1 {
@@ -94,6 +119,9 @@ body {
     height: 45%;
     top: 10%;
     left: 70%;
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
 }
 
 #right2 {
@@ -102,4 +130,7 @@ body {
     height: 45%;
     top: 55%;
     left: 70%;
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
 }

@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 import utils
+import spiders
 
 app = Flask(__name__)
 
@@ -11,14 +12,6 @@ def root():
     :return: index.html
     """
     return render_template('index.html')
-
-@app.route('/get_local_time', methods = ['GET', 'POST'])
-def get_time():
-    """
-    获取本地时间并返回
-    :return: local_time
-    """
-    return utils.get_local_time()
 
 @app.route('/get_data_update_time', methods = ['GET', 'POST'])
 def get_data_update_time():
@@ -44,5 +37,14 @@ def get_middle2_data():
     """
     return utils.get_middle2_data()
 
+@app.route('/get_left1_data', methods = ['GET', 'POST'])
+def get_left1_data():
+    """
+    获取左边第一个图标数据
+    :return:
+    """
+    return utils.get_left1_data()
+
 if __name__ == '__main__':
-    app.run(debug=False, host='127.0.0.1', port='5000')
+    # spiders.main()
+    app.run(debug=False, host='127.0.0.1', port='5006')
