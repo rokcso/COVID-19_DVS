@@ -45,7 +45,7 @@ def get_data_update_time():
     gap = (datetime.datetime.now() - data_update_time).seconds
     m_m, s = divmod(gap, 60)
     h, m = divmod(m_m, 60)
-    res = ' Data updated in ' + str(data_update_time)[0:-3] + ' (' + str(h) + 'h' + str(m) + 'm ago)'
+    res = 'Data updated in ' + str(data_update_time)[0:-3] + ' (' + str(h) + 'h' + str(m) + 'm ago)'
     return res
 
 def get_middle_num():
