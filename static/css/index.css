@@ -10,7 +10,7 @@ html, body {
     height: 10%;
     top: 0;
     left: 30%;
-    font-size: 26px;
+    font-size: 46px;
     font-weight: 700;
     display: flex; /* 弹性布局 */
     align-items: center; /* 水平居中 */
@@ -74,31 +74,88 @@ html, body {
     height: 15%;
     top: 10%;
     left: 30%;
+    font-family: "Iosevka";
     border-width: 1px;
     border-color: red;
     border-style: solid;
 }
 
-.middle1_num {
-    width: 20%;
-    height: 45%;
+.middle1_1 {
+    width: 25%;
+    height: 100%;
     float: left;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    font-family: 'Iosevka';
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.middle1_text {
-    width: 20%;
-    height: 55%;
-    float: left;
-    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+}
+
+#add1_1 {
+    color: #999999;
+    font-size: 24px;
+}
+#add1_2 {
+    color: #999999;
+    font-size: 24px;
+}
+#add1_3 {
+    color: #999999;
+    font-size: 24px;
+}
+#add1_4 {
+    color: #999999;
+    font-size: 24px;
+}
+#add1_1 span {
+    color: #e61c1d;
+    font-size: 24px;
+}
+#add1_2 span {
+    color: #ae3ac6;
+    font-size: 24px;
+}
+#add1_3 span {
+    color: #178b50;
+    font-size: 24px;
+}
+#add1_4 span {
+    color: #4e5a65;
+    font-size: 24px;
+}
+#num1_1 {
+    color: #e61c1d;
+    font-size: 46px;
+    font-weight: 700;
+}
+#num1_2 {
+    color: #ae3ac6;
+    font-size: 46px;
+    font-weight: 700;
+}
+#num1_3 {
+    color: #178b50;
+    font-size: 46px;
+    font-weight: 700;
+}
+#num1_4 {
+    color: #4e5a65;
+    font-size: 46px;
+    font-weight: 700;
+}
+#tetx1_1 {
+    font-size: 32px;
+    font-weight: 700;
+}
+#tetx1_2 {
+    font-size: 32px;
+    font-weight: 700;
+}
+#tetx1_3 {
+    font-size: 32px;
+    font-weight: 700;
+}
+#tetx1_4 {
+    font-size: 32px;
     font-weight: 700;
 }
 

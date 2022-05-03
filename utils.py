@@ -1,7 +1,6 @@
-# 自定义工具组件类
-
 import pymysql
 import datetime
+
 
 def mysql_conn():
     """
@@ -12,6 +11,7 @@ def mysql_conn():
     cursor = conn.cursor()
     return cursor, conn
 
+
 def mysql_close(cursor, conn):
     """
     断开 MySQL 数据库连接
@@ -21,6 +21,7 @@ def mysql_close(cursor, conn):
         cursor.close()
     if conn:
         conn.close()
+
 
 def mysql_query(sql, *args):
     """
@@ -35,12 +36,13 @@ def mysql_query(sql, *args):
     mysql_close(cursor, conn)
     return res
 
+
 def get_data_update_time():
     """
     查询 details 数据最近更新时间
     :return: data_update_time
     """
-    sql = "select update_time from details order by id desc limit 1"
+    sql = "select data_update_time from details_1 order by id desc limit 1"
     data_update_time = mysql_query(sql)[0][0]
     gap = (datetime.datetime.now() - data_update_time).seconds
     m_m, s = divmod(gap, 60)
@@ -48,34 +50,62 @@ def get_data_update_time():
     res = 'Data updated in ' + str(data_update_time)[0:-3] + ' (' + str(h) + 'h' + str(m) + 'm ago)'
     return res
 
-def get_middle_num():
+
+def get_middle1_num():
     """
     查询基本数据用于数据大屏中间显示
     :return:
     """
-    sql = "select sum(city_now_confirm), sum(city_today_confirm), sum(city_total_confirm), sum(city_total_heal), sum(city_total_dead) from details where update_time=(select update_time from details order by id desc limit 1)"
+    sql = "select confirm_now, confirm_add, suspect, suspect_add, heal, heal_add, dead, dead_add from history where data_update_time  = (select data_update_time from history order by id desc limit 1)"
     res_1 = mysql_query(sql)[0]
-    res = {"now_confirm": str(res_1[0]), "today_confirm": str(res_1[1]), "total_confirm": str(res_1[2]), "total_heal": str(res_1[3]), "total_dead": str(res_1[4])}
+    res = {"confirm_now": str(res_1[0]), "confirm_add": str(res_1[1]), "suspect": str(res_1[2]), "suspect_add": str(res_1[3]), "heal": str(res_1[4]), "heal_add": str(res_1[5]), "dead": str(res_1[6]), "dead_add": str(res_1[7])}
+    if res_1[1] > 0:
+        res_a1 = "+" + str(res_1[1])
+        res.update({"confirm_add": res_a1})
+    elif int(res_1[1]) < 0:
+        res_a1 = "-" + str(res_1[1])
+        res.update({"confirm_add": res_a1})
+    else:
+        pass
+    if res_1[3] > 0:
+        res_a3 = "+" + str(res_1[3])
+        res.update({"suspect_add": res_a3})
+    elif int(res_1[3]) < 0:
+        res_a3 = "-" + str(res_1[3])
+        res.update({"suspect_add": res_a3})
+    else:
+        pass
+    if res_1[5] > 0:
+        res_a5 = "+" + str(res_1[5])
+        res.update({"heal_add": res_a5})
+    elif int(res_1[5]) < 0:
+        res_a5 = "-" + str(res_1[5])
+        res.update({"heal_add": res_a5})
+    else:
+        pass
+    if res_1[7] > 0:
+        res_a7 = "+" + str(res_1[7])
+        res.update({"dead_add": res_a7})
+    elif int(res_1[7]) < 0:
+        res_a7 = "-" + str(res_1[7])
+        res.update({"dead_add": res_a7})
+    else:
+        pass
     return res
+
 
 def get_middle2_data():
     """
     获取中间第二个视图，地图数据
     :return:
     """
-    sql = "select distinct prov_name, prov_now_confirm from details where update_time = (select update_time from details order by update_time desc limit 1)"
+    sql = "select prov_name, sum(city_confirm_now) from details_1 where data_update_time = (select data_update_time from details_1 order by id desc limit 1) group by prov_name"
     res_1 = mysql_query(sql)
     res = []
     for item in res_1:
-        res.append({'name': item[0], 'value': item[1]})
-    return {'data': res}
+        res.append({"name": item[0], "value": int(item[1])})
+    return {"data": res}
 
-def get_left1_data():
-    """
-
-    :return:
-    """
-    sql = "select "
 
 if __name__ == '__main__':
-    print(get_data_update_time())
+    pass

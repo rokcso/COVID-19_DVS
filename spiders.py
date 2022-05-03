@@ -242,6 +242,9 @@ def up_risk_area_data2mysql():
 
 
 def main():
+    """
+    :return: 
+    """
     up_details2mysql()
     up_history_data2mysql()
     up_risk_area_data2mysql()
