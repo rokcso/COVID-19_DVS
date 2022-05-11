@@ -4,7 +4,7 @@ function getNum() {
         type: "POST",
         timeout: "10000",   
         success: function (data) {
-            console.log("API /get_num success!")
+            console.log("API /get_num success!");
 
             $("#num-0").html(data["now_local_confirm"]);
             $("#num-1").html(data["now_confirm"]);
@@ -21,9 +21,27 @@ function getNum() {
             $("#add-5 span").html(data["add_total_dead"]);
         },
         error: function () {
-            console.log("API /get_num error!")
+            console.log("API /get_num error!");
+        }
+    })
+}
+
+function getDataUpdateTime() {
+    $.ajax({
+        url: "get_data_update_time",
+        type: "POST",
+        timeout: "10000",
+        success: function(data) {
+            console.log("API /get_data_update_time success!");
+
+            $("#update-time-1").html(data);
+            $("#update-time-2").html(data);
+        },
+        error: function(){
+            console.log("API /get_data_update_time error!");
         }
     })
 }
 
 getNum();
+setInterval(getDataUpdateTime, 1000)

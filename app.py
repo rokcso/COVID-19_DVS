@@ -66,5 +66,21 @@ def get_num():
     return gdfdb.get_num()
 
 
+# 创建获取 middle 位置的地图数据
+@app.route('/get_middle_data', methods=['GET', 'POST'])
+def get_middle_data():
+    res_1 = gdfdb.get_middle_data()
+    res = {"now_confirm": ([{"name": res_1[0][0], "value": res_1[0][1]}]),
+           "add_now_confirm": ([{"name": res_1[0][0], "value": res_1[0][2]}]),
+           "total_confirm": ([{"name": res_1[0][0], "value": res_1[0][3]}])}
+    for i in range(1, len(res_1)):
+        res["now_confirm"].append({"name": res_1[i][0], "value": res_1[i][1]})
+    for i in range(1, len(res_1)):
+        res["add_now_confirm"].append({"name": res_1[i][0], "value": res_1[i][2]})
+    for i in range(1, len(res_1)):
+        res["total_confirm"].append({"name": res_1[i][0], "value": res_1[i][3]})
+    return jsonify(res)
+
+
 if __name__ == '__main__':
-    app.run(debug=False, host='127.0.0.1', port='5008')
+    app.run(debug=False, host='127.0.0.1', port='5024')

@@ -6,8 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新冠肺炎疫情传播模式分析与可视化系统</title>
     <link rel="stylesheet" href="../static/css/index00.css">
+    <script src="../static/js/framework/echarts.min.js"></script>
+    <script src="../static/js/framework/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/framework/china.js"></script>
 </head>
 <body>
-    
+    <div class="main">
+        <div class="header">
+            <div class="switch">
+                <button id="back-index" class="switch-btn" onclick="window.location.href='/'">返回首页</button>
+                <button id="page-index00" class="switch-btn" onclick="window.location.href='/index00'">基础数据</button>
+                <button id="page-index01" class="switch-btn" onclick="window.location.href='/index01'">传播分析</button>
+            </div>
+            <div class="title">
+                <h1>新冠肺炎疫情传播模式分析与可视化系统</h1>
+            </div>
+            <div id="update-time">正在载入数据更新时间...</div>
+        </div>
+        <div class="board">
+            <div class="board-1">
+                <div class="left">
+                    <div id="left-1">left-1</div>
+                    <div id="left-2">left-2</div>
+                </div>
+                <div id="middle">middle</div>
+                <div class="right">
+                    <div id="right-1">right-1</div>
+                    <div id="right-2">right-2</div>
+                </div>
+            </div>
+            <div class="board-2">
+                <div id="bottom"></div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/chart/middle.js"></script>
+    <script src="../static/js/index00.js"></script>
 </body>
 </html>

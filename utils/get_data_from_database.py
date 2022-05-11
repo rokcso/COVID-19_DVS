@@ -1,3 +1,5 @@
+import json
+
 import utils.query_database as qdatab
 import datetime
 
@@ -9,7 +11,7 @@ def get_data_update_time():
     gap = (datetime.datetime.now() - dataUpdateTime).seconds
     m_m, s = divmod(gap, 60)
     h, m = divmod(m_m, 60)
-    res = 'Data updated in ' + str(dataUpdateTime)[0:-3] + ' (' + str(h) + 'h' + str(m) + 'm ago)'
+    res = 'Data updated at ' + str(dataUpdateTime) + ' (' + str(h) + 'h' + str(m) + 'm' + str(s) + 's ago)'
     return res
 
 
@@ -41,7 +43,8 @@ def get_num():
     res = {"now_local_confirm": str(res_1[0]), "now_confirm": str(res_1[1]), "total_confirm": str(res_1[2]),
            "total_no_infect": str(res_1[3]), "total_imported_case": str(res_1[4]), "total_dead": str(res_1[5]),
            "add_now_local_confirm": str(res_1[6]), "add_now_confirm": str(res_1[7]), "add_total_confirm": str(res_1[8]),
-           "add_total_no_infect": str(res_1[9]), "add_total_imported_case": str(res_1[10]), "add_total_dead": str(res_1[11])}
+           "add_total_no_infect": str(res_1[9]), "add_total_imported_case": str(res_1[10]),
+           "add_total_dead": str(res_1[11])}
     if int(res_1[6]) > 0:
         res_a1 = "+" + str(res_1[6])
         res.update({"add_now_local_confirm": res_a1})
@@ -96,4 +99,18 @@ def get_num():
     else:
         pass
 
+    return res
+
+
+# 获取 index00 页面地图数据
+def get_middle_data():
+    sql = """
+    
+    select prov_name, prov_now_confirm, prov_add_now_confirm, prov_total_confirm
+from prov_details
+where last_update_time = 
+(select last_update_time from prov_details order by id desc limit 1)
+    
+    """
+    res = qdatab.query_sql(sql)
     return res
