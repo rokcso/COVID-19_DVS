@@ -1,3 +1,4 @@
+from neo4j import Query
 import pymysql
 import datetime
 
@@ -58,7 +59,9 @@ def get_middle1_num():
     """
     sql = "select confirm_now, confirm_add, suspect, suspect_add, heal, heal_add, dead, dead_add from history where data_update_time  = (select data_update_time from history order by id desc limit 1)"
     res_1 = mysql_query(sql)[0]
-    res = {"confirm_now": str(res_1[0]), "confirm_add": str(res_1[1]), "suspect": str(res_1[2]), "suspect_add": str(res_1[3]), "heal": str(res_1[4]), "heal_add": str(res_1[5]), "dead": str(res_1[6]), "dead_add": str(res_1[7])}
+    res = {"confirm_now": str(res_1[0]), "confirm_add": str(res_1[1]), "suspect": str(res_1[2]),
+           "suspect_add": str(res_1[3]), "heal": str(res_1[4]), "heal_add": str(res_1[5]), "dead": str(res_1[6]),
+           "dead_add": str(res_1[7])}
     if res_1[1] > 0:
         res_a1 = "+" + str(res_1[1])
         res.update({"confirm_add": res_a1})
@@ -96,16 +99,33 @@ def get_middle1_num():
 
 def get_middle2_data():
     """
-    获取中间第二个视图，地图数据
-    :return:
+    :return: 各省数据
     """
-    sql = "select prov_name, sum(city_confirm_now) from details_1 where data_update_time = (select data_update_time from details_1 order by id desc limit 1) group by prov_name"
-    res_1 = mysql_query(sql)
-    res = []
-    for item in res_1:
-        res.append({"name": item[0], "value": int(item[1])})
-    return {"data": res}
+    sql = "select prov_name, " \
+          "sum(city_confirm_now) " \
+          "from details_1 " \
+          "where data_update_time = " \
+              " (select data_update_time from details_1 order by data_update_time desc limit 1) " \
+          "group by prov_name"
+    res = mysql_query(sql)
+    return res
 
 
-if __name__ == '__main__':
+def get_left1_data():
+    """
+    :return: 
+    """
+    sql1 = "select prov_name, " \
+           "sum(city_confirm_now), " \
+            "sum(city_confirm_add) " \
+            "from details_1 " \
+            "where data_update_time = " \
+                "(select data_update_time from details_1 order by data_update_time  desc limit 1) " \
+            "group by prov_name"
+    # sql2 = "select prov_name from details_1 where data_update_time=(select data_update_time from details_1 order by data_update_time desc limit 1) group by prov_name"
+    res1 = mysql_query(sql1)
+    # res2 = mysql_query(sql2)
+    return res1
+
+if __name__ == "__main__":
     pass
