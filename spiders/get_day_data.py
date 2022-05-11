@@ -132,8 +132,3 @@ def update_china_day_list():
         traceback.print_exc()
     finally:
         qdatab.close_database(conn, cursor)
-
-
-if __name__ == "__main__":
-    update_china_day_list()
-
