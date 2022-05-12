@@ -2,7 +2,10 @@ var myChartMiddle = echarts.init(document.getElementById("middle"));
 
 var myChartMiddleOption = {
     title: {
-        text: '全国疫情地图'
+        text: '全国疫情地图',
+        textStyle: {
+            color: '#ffffff'
+          }
     },
     tooltip: {
         trigger: 'item'

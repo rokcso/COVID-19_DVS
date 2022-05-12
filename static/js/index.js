@@ -45,3 +45,4 @@ function getDataUpdateTime() {
 
 getNum();
 setInterval(getDataUpdateTime, 1000)
+// getDataUpdateTime()

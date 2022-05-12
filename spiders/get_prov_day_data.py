@@ -12,7 +12,7 @@ def crawl_prov_day_data():
     url = "https://api.inews.qq.com/newsqa/v1/query/pubished/daily/list?province="
     url_list = []
     for i in prov_list:
-        url_list.append(url + i)
+        url_list.append(url + i + "&limit=30")
 
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36'
