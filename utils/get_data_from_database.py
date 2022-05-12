@@ -114,3 +114,14 @@ where last_update_time =
     """
     res = qdatab.query_sql(sql)
     return res
+
+
+# 获取 left-1 数据
+def  get_left1_data():
+    sql = """
+    
+    
+    """
+
+    res = qdatab.query_sql(sql)
+    return res

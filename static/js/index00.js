@@ -31,5 +31,25 @@ function getMiddleData() {
 };
 
 
+function getLeft1Data() {
+    $.ajax({
+        url: "/get_left1_data",
+        type: "POST",
+        timeout: "10000",
+        success: function(data) {
+            myChartLeft1Option.xAxis[0].data = data["date"];
+            myChartLeft1Option.series[0].data = data["now_confirm"];
+            myChartLeft1Option.series[1].data = data["add_now_confirm"];
+            myChartLeft1Option.series[2].data = data["total_confirm"];
+            myChartLeft1.setOption(myChartLeft1Option);
+        },
+        error: function(){
+            console.log("API /get_left1_data error!")
+        }
+    })
+};
+
+
 setInterval(getDataUpdateTime, 1000);
 getMiddleData();
+getLeft1Data();

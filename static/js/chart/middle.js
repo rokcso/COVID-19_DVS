@@ -67,7 +67,7 @@ var myChartMiddleOption = {
         label: {
             show: true
         },
-        data: []
+        data: [{name: "四川", value: 999}]
     },
     {
         name: '新增确诊',
