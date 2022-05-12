@@ -1,4 +1,4 @@
-from crypt import methods
+
 from flask import Flask, jsonify
 from flask import render_template
 import utils.get_data_from_database as gdfdb
@@ -86,8 +86,14 @@ def get_middle_data():
 @app.route('/get_left1_data', methods=['GET', 'POST'])
 def get_left1_data():
     res = gdfdb.get_left1_data()
-    return res
+    day_data = []
+    data = {}
+    for i in res:
+        for j in res:
+            day_data.append({"date": str(j[0])[5:10], "now_confirm": j[2], "add_now_confirm": j[3], "total_confirm": j[4]})
+        data[i[1]] = day_data
+    return jsonify(data)
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='127.0.0.1', port='5024')
+    app.run(debug=False, host='127.0.0.1', port='5026')

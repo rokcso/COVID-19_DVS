@@ -1,59 +1,57 @@
-var myChart_right1 = echarts.init(document.getElementById('right1'));
+var myChartRight1 = echarts.init(document.getElementById("right-1"));
 
-var myChart_right1_option = {
+var myChartRightOption = {
     title: {
-        text: '全国现有确诊',
-        subtext: '',
+        text: '全国现有/新增/累计确诊 Top 城市'
     },
-
     tooltip: {
-        trigger: 'item'
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+    legend: {
+        data: ['现有确诊', '新增确诊', '累计确诊'],
+		left: 0,
+		top: 20,
+        selected: {
+            '现有确诊': true,
+            '新增确诊': false,
+            '累计确诊': false
+        },
+        selectedMode: 'single'
     },
-    //左侧小导航图标
-    visualMap: {
-        show: true,
-        x: 'left',
-        y: 'bottom',
-        textStyle: {
-            fontSize: 8,
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01]
+      },
+      yAxis: {
+        type: 'category',
+        data: []
+      },
+      series: [
+        {
+          name: '现有确诊',
+          type: 'bar',
+          data: [18203, 23489, 29034, 104970, 131744, 630230]
         },
-        splitList: [{ start: 1,end: 9 },
-            {start: 10, end: 99 }, 
-			{ start: 100, end: 999 },
-            {  start: 1000, end: 9999 },
-            { start: 10000 }],
-        color: ['#8A3310', '#C64918', '#E55B25', '#F2AD92', '#F9DCD1']
-    },
-    //配置属性
-    series: [{
-        name: '现有确诊人数',
-        type: 'map',
-        mapType: 'china',
-        roam: false, //拖动和缩放
-        itemStyle: {
-            normal: {
-                borderWidth: .5, //区域边框宽度
-                borderColor: '#62d3ff', //区域边框颜色
-                areaColor: "#b7ffe6", //区域颜色
-            },
-            emphasis: { //鼠标滑过地图高亮的相关设置
-                borderWidth: .5,
-                borderColor: '#fff',
-                areaColor: "#fff",
-            }
+        {
+          name: '新增确诊',
+          type: 'bar',
+          data: [19325, 23438, 31000, 121594, 134141, 681807]
         },
-        label: {
-            normal: {
-                show: true, //省份名称
-                fontSize: 8,
-            },
-            emphasis: {
-                show: true,
-                fontSize: 8,
-            }
-        },
-        data:[] //mydata //数据
-    }]
+        {
+          name: '累计确诊',
+          type: 'bar',
+          data: [19325, 23438, 31000, 121594, 134141, 681807]
+        }
+      ]
 };
 
-myChart_right1.setOption(myChart_right1_option);
+myChartRight1.setOption(myChartRightOption)

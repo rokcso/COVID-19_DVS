@@ -113,13 +113,12 @@ body {
     left: 75%;
     width: 25%;
     height: 90%;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
 }
 
 #right-1 {
     width: 100%;
     height: 50%;
-    background-color: red;
 }
 
 #right-2 {

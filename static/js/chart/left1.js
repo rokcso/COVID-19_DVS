@@ -16,7 +16,12 @@ var myChartLeft1Option = {
 	legend: {
 		data: ['现有确诊', '新增确诊', '累计确诊'],
 		left: 0,
-		top: 20
+		top: 20,
+		selected: {
+            '现有确诊': true,
+            '新增确诊': false,
+            '累计确诊': false
+        }
 	},
 	grid: {
 		left: '3%',

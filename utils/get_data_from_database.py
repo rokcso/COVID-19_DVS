@@ -117,11 +117,26 @@ where last_update_time =
 
 
 # 获取 left-1 数据
-def  get_left1_data():
+def get_left1_data():
     sql = """
     
+    SELECT update_date, prov_name, now_confirm, add_confirm, total_confirm
+    FROM prov_day_list
+    WHERE substr(update_date, 1, 10) between substr(date_sub(now(), INTERVAL 14 DAY), 1, 10) and now()
     
     """
 
     res = qdatab.query_sql(sql)
     return res
+
+
+# 获取 right-1 数据
+def get_right1_data():
+    sql = """
+
+
+    """
+
+    res = qdatab.query_sql(sql)
+    return res
+
