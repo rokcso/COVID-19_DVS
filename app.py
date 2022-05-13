@@ -3,7 +3,6 @@ from flask import Flask, jsonify
 from flask import render_template
 import utils.get_data_from_database as gdfdb
 
-
 # 初始化一个 Python Flask App 对象
 app = Flask(__name__)
 
@@ -115,7 +114,9 @@ def get_left1_data():
         aa = (temp_date + datetime.timedelta(days=-i)).strftime("%m.%d")
         date.append(aa)
 
-    return jsonify({"date": date[::-1], "prov_name": prov_list, "now_confirm": now_confirm1, "add_now_confirm": add_now_confirm1, "total_confirm": total_confirm1})
+    return jsonify(
+        {"date": date[::-1], "prov_name": prov_list, "now_confirm": now_confirm1, "add_now_confirm": add_now_confirm1,
+         "total_confirm": total_confirm1})
 
 
 @app.route('/get_left1_first_data', methods=['GET', 'POST'])
@@ -130,7 +131,8 @@ def get_left1_first_data():
         temp_date = datetime.datetime.now()
         aa = (temp_date + datetime.timedelta(days=-i)).strftime("%m.%d")
         date.append(aa)
-    return jsonify({"date": date[::-1], "now_confirm": now_confirm1, "add_now_confirm": add_now_confirm1, "total_confirm": total_confirm1})
+    return jsonify({"date": date[::-1], "now_confirm": now_confirm1, "add_now_confirm": add_now_confirm1,
+                    "total_confirm": total_confirm1})
 
 
 @app.route('/get_right1_data', methods=['GET', 'POST'])
@@ -177,5 +179,39 @@ def get_right1_data():
     return jsonify({"prov_name": prov_list, "data": data})
 
 
+@app.route('/get_right2_data', methods=['GET', 'POST'])
+def get_right2_data():
+    res = gdfdb.get_right1_data()
+
+    prov_list = ["台湾", "上海", "香港", "北京", "河南", "广东", "云南", "吉林", "辽宁", "贵州", "湖北", "陕西", "浙江", "福建", "黑龙江", "山东", "江苏",
+                 "四川", "河北", "天津", "内蒙古", "广西", "湖南", "江西", "安徽", "新疆", "重庆", "甘肃", "山西", "海南", "宁夏", "青海", "澳门", "西藏"]
+
+    data = []
+    for i in prov_list:
+        now_confirm, add_confirm, total_confirm = [], [], []
+        for j in res:
+            if i == j[0]:
+                now_confirm.append({"name": j[1], "value": j[2]})
+                add_confirm.append({"name": j[1], "value": j[3]})
+                total_confirm.append({"name": j[1], "value": j[4]})
+        data.append(
+            {"prov_name": i, "now_confirm": now_confirm, "add_confirm": add_confirm, "total_confirm": total_confirm})
+
+    return jsonify(data)
+
+
+@app.route("/get_left2_data", methods=['GET', 'POST'])
+def get_left2_data():
+    data = gdfdb.get_left2_data()
+    # end_update_time, province, city, county, community, type
+    details = []
+    risk = []
+    # end_update_time = data[0][0]
+    for a, b, c, d, e, f in data:
+        risk.append(f)
+        details.append(f"{b}\t{c}\t{d}\t{e}")
+    return jsonify({"risk": risk, "details": details})
+
+
 if __name__ == '__main__':
-    app.run(debug=False, host='127.0.0.2', port='5019')
+    app.run(debug=False, host='127.0.0.4', port='5002')

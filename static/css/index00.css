@@ -76,7 +76,7 @@ body {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 80%;
+    height: 500px;
     /* background-color: red; */
 }
 
@@ -96,7 +96,8 @@ body {
 #left-2 {
     width: 100%;
     height: 50%;
-    background-color: green;
+    /* background-color: green; */
+    margin-left: 4px;
 }
 
 #middle {
@@ -124,13 +125,62 @@ body {
 #right-2 {
     width: 100%;
     height: 50%;
-    background-color: green;
+    /* background-color: green; */
 }
 
 .board-2 {
     position: absolute;
-    top: 72%;
+    top: 70%;
     width: 100%;
-    height: 30%;
-    background-color: #ffffff;
+    height: 200px;
+    /* background-color: #ffffff; */
+}
+
+#bottom {
+    height: 100%;
+    /* background-color: #fff; */
+}
+
+
+
+#left2-title {
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+}
+
+#risk_wrapper{
+	margin-top: 2.5%;
+	overflow: hidden;
+	height: 80%;
+	text-align: center;
+}
+.hight-risk{
+	color: red;
+    font-weight: 700;
+}
+.middle-risk{
+	color: yellow;
+}
+#left-2 ul{
+	list-style: none;
+    padding-left: 0;
+}
+#left-2 li{
+	color: white;
+	text-align: justify;
+	font-size: 12px;
+
+}
+
+#left-num {
+    font-size: 12px;
+}
+
+#left1-num1 {
+    color: red;
+}
+
+#left1-num2 {
+    color: yellow;
 }

@@ -20,6 +20,7 @@ function getMiddleData() {
         timeout: "10000",
         success: function(data){
             console.log("API /get_middle_data success!")
+            // console.log(data)
             myChartMiddleOption.series[0].data = data["now_confirm"];
             myChartMiddleOption.series[1].data = data["add_now_confirm"];
             myChartMiddleOption.series[2].data = data["total_confirm"];
@@ -150,9 +151,71 @@ function getRight1Data() {
 };
 
 
+// function getLeft2Data() {
+//     $.ajax({
+//         url: "/get_left2_data",
+//         type: "POST",
+//         timeout: "10000",
+//         success: function(data) {
+//             var update_time = data.update_time
+//             var details = data.details
+//             var risk = data.risk
+//             //  $("#l2 .ts").html("截至时间：" + update_time)
+//             var s =""
+//             for(var i in details){
+//                 if (risk[i] == "高风险"){
+//                      s += "<li><span class='high_risk'>高风险\t\t</span>"+ details[i] + "</li>"
+//                 }else{
+//                      s += "<li><span class='middle_risk'>中风险\t\t</span>"+ details[i] + "</li>"
+//                 }
+//             }
+//              $("#risk_wrapper_li1 ul").html(s)
+//             start_roll()
+// 		},
+// 		error: function(xhr, type, errorThrown) {
+// 		}
+//     })
+// }
+
+
+function getLeft2Data() {
+    $.ajax({
+        url: '/get_left2_data',
+        type: 'POST',
+        timeout: '10000',
+        success: function(data) {
+            var details = data.details;
+            var risk = data.risk;
+            // console.log(details);
+            // console.log(risk);
+            var h_num = 0;
+            var m_num = 0;
+            var falg = '';
+            for (var i in details) {
+                if (risk[i] == '高风险') {
+                    falg += "<li><span class='hight-risk'>高风险</span>" + details[i] + "</li>"
+                    h_num = h_num + 1;
+                } else {
+                    falg += "<li><span class='middle-risk'>中风险</span>" + details[i] + "</li>"
+                    m_num = m_num + 1;
+                }
+            };
+            // console.log(falg);
+            $("#left1-num1-num").html(h_num);
+            $("#left1-num2-num").html(m_num);
+            $("#risk_wrapper_li1 ul").html(falg);
+            start_roll()
+        },
+        error: function() {
+            console.log("API /get_left2_data error!")
+        }
+    })
+};
+
 
 setInterval(getDataUpdateTime, 1000);
 getMiddleData();
 getRight1Data();
 getLeft1Data();
+getLeft2Data();
 // getLeft1FirstData();

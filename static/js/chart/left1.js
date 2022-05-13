@@ -18,8 +18,8 @@ var myChartLeft1Option = {
 		left: 0,
 		top: 20,
 		selected: {
-            '现有确诊': true,
-            '新增确诊': false,
+            '现有确诊': false,
+            '新增确诊': true,
             '累计确诊': false
         },
 		selectedMode: 'single'

@@ -11,7 +11,18 @@ def get_data_update_time():
     gap = (datetime.datetime.now() - dataUpdateTime).seconds
     m_m, s = divmod(gap, 60)
     h, m = divmod(m_m, 60)
-    res = 'Data updated at ' + str(dataUpdateTime) + ' (' + str(h) + 'h' + str(m) + 'm' + str(s) + 's ago)'
+    res = '数据更新于: ' + str(dataUpdateTime) + ' (' + str(h) + 'h' + str(m) + 'm' + str(s) + 's 前)'
+    return res
+
+
+def get_left2_data():
+    # 因为会更新多次数据，取时间戳最新的那组数据
+    sql = "select data_update_time, province, city, county, community, type " \
+          "from risk_area " \
+          "where data_update_time=(select data_update_time " \
+          "from risk_area " \
+          "order by data_update_time desc limit 1) "
+    res = qdatab.query_sql(sql)
     return res
 
 
@@ -153,4 +164,3 @@ def get_right1_data():
 
     res = qdatab.query_sql(sql)
     return res
-

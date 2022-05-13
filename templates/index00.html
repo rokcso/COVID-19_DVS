@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
     <script src="../static/js/framework/jquery-3.6.0.min.js"></script>
     <script src="../static/js/framework/china.js"></script>
 </head>
+
 <body>
     <div class="main">
         <div class="header">
@@ -27,13 +29,29 @@
         <div class="board">
             <div class="board-1">
                 <div class="left">
-                    <div id="left-1">left-1</div>
-                    <div id="left-2">left-2</div>
+                    <div id="left-1"></div>
+                    <div id="left-2">
+                        <div id="left2-title">中高风险地区信息
+                            <span id="left-num">
+                                <span id="left1-num1">高风险: </span><span id="left1-num1-num"></span>
+                                <span style="color:#000;"> | </span>
+                                <span id="left1-num2">中风险: </span><span id="left1-num2-num"></span>
+                            </span>
+                        </div>
+                        <div id="risk_wrapper">
+                            <div id="risk_wrapper_li1">
+                                <ul>
+                                </ul>
+                            </div>
+                            <div id="risk_wrapper_li2"></div>
+                        </div>
+                        
+                    </div>
                 </div>
                 <div id="middle">middle</div>
                 <div class="right">
-                    <div id="right-1">right-1</div>
-                    <div id="right-2">right-2</div>
+                    <div id="right-1"></div>
+                    <div id="right-2"></div>
                 </div>
             </div>
             <div class="board-2">
@@ -41,9 +59,13 @@
             </div>
         </div>
     </div>
-    <script src="../static/js/chart/left1.js"></script>
     <script src="../static/js/chart/middle.js"></script>
+    <script src="../static/js/chart/left1.js"></script>
+    <script src="../static/js/chart/left2.js"></script>
     <script src="../static/js/chart/right1.js"></script>
+    <script src="../static/js/chart/right2.js"></script>
+    <script src="../static/js/chart/bottom.js"></script>
     <script src="../static/js/index00.js"></script>
 </body>
+
 </html>
