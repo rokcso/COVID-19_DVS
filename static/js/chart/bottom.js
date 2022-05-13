@@ -15,32 +15,19 @@ const data = [[0, 0, 5], [0, 1, 1], [0, 2, 0], [0, 3, 0], [0, 4, 0], [0, 5, 0], 
 
 var myChartBottomOption = {
     title: {
-        text: '省份间疫情发展趋势对比',
+        text: '近 60 天疫情爆发 TOP7 省份新增确诊趋势',
         textStyle: {
-            color: '#000'
+            color: '#ffffff'
         }
     },
     tooltip: {
         position: 'top'
       },
-      legend: {
-        data: ['现有确诊', '新增确诊', '累计确诊'],
-        left: 0,
-        top: 60,
-        orient: 'vertical',
-        selected: {
-            '现有确诊': true,
-            '新增确诊': false,
-            '累计确诊': false
-        },
-        selectedMode: 'single',
-        textStyle: {
-            color: '#232323'
-        }
-    },
     grid: {
-        height: '50%',
-        top: 50
+        height: '72%',
+        top: 30,
+        right: 15,
+        left: 40
       },
       xAxis: {
         type: 'category',
@@ -58,43 +45,17 @@ var myChartBottomOption = {
       },
       visualMap: {
         min: 0,
-        max: 10,
-        calculable: true,
-        orient: 'vertical',
-        right: 0,
-        top: 10
+        max: 1000,
+        calculable: false,
+        orient: 'horizontal',
+        // right: 0,
+        top: 0,
+        left: 350
       },
       series: [
-        {
-          name: '现有确诊',
-          type: 'heatmap',
-          data: data,
-          label: {
-            show: true
-          },
-          emphasis: {
-            itemStyle: {
-              shadowBlur: 10,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
-            }
-          }
-        },
+        
         {
             name: '新增确诊',
-            type: 'heatmap',
-            data: data,
-            label: {
-              show: true
-            },
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
-          },
-          {
-            name: '累计确诊',
             type: 'heatmap',
             data: data,
             label: {

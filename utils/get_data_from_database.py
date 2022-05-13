@@ -164,3 +164,65 @@ def get_right1_data():
 
     res = qdatab.query_sql(sql)
     return res
+
+
+def get_bottom_data():
+    # 找出新增确诊人数最多的 TOP 省份
+    sql2 = """
+
+        select prov_name, sum(add_confirm)
+        from prov_day_list
+        WHERE substr(update_date, 1, 10) between substr(date_sub(now(), INTERVAL 60 DAY), 1, 10) and now()
+        group by prov_name
+        order by sum(add_confirm) desc
+
+    """
+    res2 = qdatab.query_sql(sql2)
+    prov_list = []
+    for i in range(0, 7):
+        prov_list.append(res2[i][0])
+    prov_list = prov_list[::-1]
+
+    # 根据上方省份查询数据
+    sql = """
+    
+    SELECT update_date, prov_name, now_confirm, add_confirm, total_confirm
+    FROM prov_day_list
+    WHERE substr(update_date, 1, 10) 
+    between substr(date_sub(now(), INTERVAL 61 DAY), 1, 10) 
+    and substr(date_sub(now(), interval 2 day), 1, 10)
+    and prov_name in %s
+    order by case when prov_name = %s then 1
+    when prov_name = %s then 2
+    when prov_name = %s then 3
+    when prov_name = %s then 4
+    when prov_name = %s then 5
+    when prov_name = %s then 6
+    when prov_name = %s then 7
+    end
+    
+    """
+    res = qdatab.query_sql(sql, prov_list, prov_list[0], prov_list[1], prov_list[2], prov_list[3], prov_list[4],
+                           prov_list[5], prov_list[6])
+
+    # 获取日期列表
+    date1 = []
+    for i in range(2, 62):
+        temp_date = datetime.datetime.now()
+        aa = (temp_date + datetime.timedelta(days=-i)).strftime("%m.%d")
+        date1.append(aa)
+    date = date1[::-1]
+
+    # 构建 data 数据的坐标部分数据
+    add_data = []
+    for i in range(0, len(prov_list)):
+        for j in range(0, len(date)):
+            f = [i, j]
+            add_data.append(f)
+
+    for i in range(0, len(prov_list)):
+        for j in range(0, len(res)):
+            if res[j][1] == prov_list[i]:
+                add_data[j].append(res[j][3])
+
+    return prov_list, date, add_data

@@ -213,9 +213,33 @@ function getLeft2Data() {
 };
 
 
+function getBottomData() {
+    $.ajax({
+        url: '/get_bottom_data',
+        type: 'POST',
+        timeout: '10000',
+        success: function(data) {
+            myChartBottomOption.xAxis.data = data["date"];
+            myChartBottomOption.yAxis.data = data["prov_list"];
+            myChartBottomOption.series[0].data = data["add_confirm"].map(function(item) {
+                return [item[1], item[0], item[2] || '-'];
+            });
+            console.log(data["add_confirm"].map(function(item) {
+                return [item[1], item[0], item[2] || '-'];
+            }));
+            myChartBottom.setOption(myChartBottomOption);
+        },
+        error: function() {
+            console.log("API /get_bottom_data error!");
+        }
+    })
+}
+
+
 setInterval(getDataUpdateTime, 1000);
 getMiddleData();
 getRight1Data();
 getLeft1Data();
 getLeft2Data();
+getBottomData();
 // getLeft1FirstData();

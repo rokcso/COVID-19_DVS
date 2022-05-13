@@ -1,107 +1,77 @@
-html, body {
-    height: 100%;
-    overflow: auto;
-    margin: 0;
+* {
+    font-family: "montserrat", sans-serif;
 }
 
-#top {
+body {
+    margin: 0;
+    padding: 0;
+    /* background: #333; */
+    min-height: 100vh;
+    background-image: linear-gradient(45deg, #9fbaa8, #31354c);
+}
+
+.header {
     position: absolute;
+    top: 0;
     width: 100%;
     height: 10%;
-    top: 0;
     display: flex;
-    justify-content: center;
-
-    border: solid;
-}
-
-#top1 {
-    width: 25%;
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
-.top1-btn {
-    width: 35%;
-    height: 50%;
+.switch {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
-#top2 {
+#update-time {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.title {
     width: 50%;
-    font-size: 36px;
-    font-weight: 700;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
+    font-weight: 900;
 }
 
-#top3 {
-    width: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
+.switch-btn {
+    width: 70px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    transition: .5s;
+    background: linear-gradient(45deg, #9fbaa8, #31354c);
+    background-size: 200%;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #ffffff;
+    color: #ffffff;
 }
 
-#chart {
+.switch-btn:hover{
+    background-position: right;
+}
+
+#page-index01 {
+    background-position: right;
+}
+
+.board {
     position: absolute;
+    top: 10%;
     width: 100%;
     height: 90%;
-    top: 10%;
-    display: flex;
-    justify-content: center;
-}
-
-#left {
-    width: 30%;
-
-    border: solid;
-}
-
-#left-title {
-    height: 5%;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-#left-chart {
-    height: 95%;
-
-    background-color: aqua;
-}
-
-#middle {
-    width: 40%;
-
-    border: solid;
-}
-
-#middle-title {
-    height: 5%;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-#middle-chart {
-    height: 95%;
-
-    background-color: aqua;
-}
-
-#right {
-    width: 30%;
-
-    border: solid;
-}
-
-#right-title {
-    height: 5%;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-#right-chart {
-    height: 95%;
-
-    background-color: aqua;
 }

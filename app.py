@@ -213,5 +213,11 @@ def get_left2_data():
     return jsonify({"risk": risk, "details": details})
 
 
+@app.route('/get_bottom_data', methods=['GET', 'POST'])
+def get_bottom_data():
+    res = gdfdb.get_bottom_data()
+    return jsonify({"prov_list": res[0], "date": res[1], "add_confirm": res[2]})
+
+
 if __name__ == '__main__':
-    app.run(debug=False, host='127.0.0.4', port='5002')
+    app.run(debug=False, host='127.0.0.1', port='5029')

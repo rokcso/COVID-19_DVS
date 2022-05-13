@@ -10,29 +10,19 @@
 </head>
 
 <body>
-    <div>
-        <div id="top">
-            <div id="top1">
-                <button class="top1-btn" onclick="window.location.href='/'">基础数据</button>&nbsp;&nbsp;
-                <button class="top1-btn" onclick="window.location.href='/index01'">传播分析</button>
+    <div class="mian">
+        <div class="header">
+            <div class="switch">
+                <button id="back-index" class="switch-btn" onclick="window.location.href='/'">返回首页</button>
+                <button id="page-index00" class="switch-btn" onclick="window.location.href='/index00'">基础数据</button>
+                <button id="page-index01" class="switch-btn" onclick="window.location.href='/index01'">传播分析</button>
             </div>
-            <div id="top2">新冠肺炎疫情传播模式分析与可视化</div>
-            <div id="top3"></div>
+            <div class="title">
+                <h1>新冠肺炎疫情传播模式分析与可视化系统</h1>
+            </div>
+            <div id="update-time">正在载入数据更新时间...</div>
         </div>
-        <div id="chart">
-            <div id="left">
-                <div id="left-title">xx省交通流入/流出趋势</div>
-                <div id="left-chart"></div>
-            </div>
-            <div id="middle">
-                <div id="middle-title">全国交通流向</div>
-                <div id="middle-chart"></div>
-            </div>
-            <div id="right">
-                <div id="right-title">xx省交通流出 TOP 地区</div>
-                <div id="right-chart"></div>
-            </div>
-        </div>
+        <div class="board"></div>
     </div>
 
     <script src="../static/js/index01.js"></script>
