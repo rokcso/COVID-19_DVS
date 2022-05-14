@@ -26,13 +26,13 @@ def index00():
     return render_template('index00.html')
 
 
-@app.route('/index01', methods=['GET', 'POST'])
-def index01():
-    """
-    返回一个 HTML 模板文件
-    :return: 
-    """
-    return render_template('index01.html')
+# @app.route('/index01', methods=['GET', 'POST'])
+# def index01():
+#     """
+#     返回一个 HTML 模板文件
+#     :return:
+#     """
+#     return render_template('index01.html')
 
 
 @app.errorhandler(404)
@@ -220,4 +220,4 @@ def get_bottom_data():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='127.0.0.1', port='5029')
+    app.run(debug=False, host='127.0.0.1', port='5001')
