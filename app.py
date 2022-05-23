@@ -1,3 +1,6 @@
+# -*- coding: UTF-8 -*-
+
+
 import datetime
 from flask import Flask, jsonify
 from flask import render_template
@@ -109,7 +112,7 @@ def get_left1_data():
         add_now_confirm1.append(add_now_confirm)
         total_confirm1.append(total_confirm)
 
-    for i in range(0, 14):
+    for i in range(1, 15):
         temp_date = datetime.datetime.now()
         aa = (temp_date + datetime.timedelta(days=-i)).strftime("%m.%d")
         date.append(aa)
@@ -220,4 +223,4 @@ def get_bottom_data():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='127.0.0.1', port='5001')
+    app.run(debug=False, host='127.0.0.1', port='5000')

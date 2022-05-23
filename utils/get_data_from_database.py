@@ -133,7 +133,7 @@ def get_left1_data():
     
     SELECT update_date, prov_name, now_confirm, add_confirm, total_confirm
     FROM prov_day_list
-    WHERE substr(update_date, 1, 10) between substr(date_sub(now(), INTERVAL 14 DAY), 1, 10) and now()
+    WHERE substr(update_date, 1, 10) between substr(date_sub(now(), INTERVAL 15 DAY), 1, 10) and substr(date_sub(now(), interval 1 day), 1, 10)
     """
 
     res = qdatab.query_sql(sql)

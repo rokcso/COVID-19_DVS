@@ -28,7 +28,7 @@ function getNum() {
 
 function getDataUpdateTime() {
     $.ajax({
-        url: "get_data_update_time",
+        url: "/get_data_update_time",
         type: "POST",
         timeout: "10000",
         success: function(data) {

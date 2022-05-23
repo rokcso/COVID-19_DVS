@@ -236,6 +236,71 @@ function getBottomData() {
 }
 
 
+// 配置一个默认数据更新
+
+function getLeft1DataDefault() {
+        $.ajax({
+            url: "/get_left1_data",
+            type: "POST",
+            timeout: "10000",
+            success: function(data) {
+                console.log("API /get_left1_data success!")
+                res = data
+                myChartLeft1Option.xAxis[0].data = res["date"];
+                function clickWhere(point) {
+                    for (var i = 0; i < res["prov_name"].length; i++) {
+                        if (point == res["prov_name"][i]) {
+                            return i;
+                        }
+                    }
+                };
+                flag = clickWhere('四川');
+                // console.log(e.name);
+                // console.log(flag);
+                myChartLeft1Option.series[0].data = res["now_confirm"][flag];
+                myChartLeft1Option.series[1].data = res["add_now_confirm"][flag];
+                myChartLeft1Option.series[2].data = res["total_confirm"][flag];
+                myChartLeft1Option.title.text = res["prov_name"][flag] + '疫情变化趋势';
+                myChartLeft1.setOption(myChartLeft1Option);
+            },
+            error: function(){
+                console.log("API /get_left1_data error!")
+            }
+        })
+};
+function getRight1DataDefault() {
+        $.ajax({
+            url: "/get_right1_data",
+            type: "POST",
+            timeout: "10000",
+            success: function(data) {
+                console.log("API /get_right1_data success!")
+                res = data;
+                // console.log(res)
+                function clickWhere(point) {
+                    for (var i = 0; i < res["prov_name"].length; i++) {
+                        if (point ==  res["prov_name"][i]) {
+                            return i;
+                        }
+                    }
+                }
+                flag = clickWhere('四川');
+                myChartRight1Option.title.text = res["prov_name"][flag] + "各地区现有/新增/累计确诊数据";
+                myChartRight1Option.dataset[0].source = res["data"][flag]
+                myChartRight1.setOption(myChartRight1Option)
+            },
+            error: function() {
+                console.log("API /get_right1_data error!")
+            }
+        })
+};
+
+
+getLeft1DataDefault();
+getRight1DataDefault();
+
+
+
 setInterval(getDataUpdateTime, 1000);
 getMiddleData();
 getRight1Data();
