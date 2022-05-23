@@ -2,6 +2,9 @@ import time
 import traceback
 import requests
 import json
+import sys
+
+sys.path.append("..")
 import utils.query_database as qdatab
 
 

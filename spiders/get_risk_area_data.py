@@ -3,6 +3,9 @@ import requests
 import time
 import hashlib
 import json
+import sys
+
+sys.path.append("..")
 import utils.query_database as qdatab
 
 

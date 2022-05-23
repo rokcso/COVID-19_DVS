@@ -1,5 +1,3 @@
-import json
-
 import utils.query_database as qdatab
 import datetime
 
