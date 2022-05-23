@@ -1,5 +1,8 @@
 var myChartRight2 = echarts.init(document.getElementById("right-2"));
-var myChartRight2Option;
+// var myChartRight2Option;
+var myChartRight2Option = {
+    series: []
+};
 var ROOT_PATH = '\\static\\chinaGeoJson';
 var url = ROOT_PATH + '\\' + '四川' + '.json';
 // console.log(e.name);
