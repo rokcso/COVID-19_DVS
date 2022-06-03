@@ -15,7 +15,7 @@ def crawl_prov_day_data():
     url = "https://api.inews.qq.com/newsqa/v1/query/pubished/daily/list?province="
     url_list = []
     for i in prov_list:
-        url_list.append(url + i + "&limit=30")
+        url_list.append(url + i + "&limit=2")
 
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36'
@@ -94,8 +94,8 @@ def update_prov_day_data():
         for key_a, value_a in data.items():
             prov_name = key_a
             for key_b, value_b in value_a.items():
-                if not cursor.execute(sql_2, key_b):
-                    cursor.execute(sql_1, [key_b,
+                # if not cursor.execute(sql_2, key_b):
+                cursor.execute(sql_1, [key_b,
                                            prov_name,
                                            value_b.get("now_confirm"),
                                            value_b.get("total_confirm"),
@@ -111,3 +111,7 @@ def update_prov_day_data():
         traceback.print_exc()
     finally:
         qdatab.close_database(conn, cursor)
+
+
+if __name__ == "__main__":
+    update_prov_day_data()  # 更新省份日更历史数据，注意：最好每天 00:01 更新

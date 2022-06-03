@@ -58,7 +58,7 @@ def get_num():
         res_a1 = "+" + str(res_1[6])
         res.update({"add_now_local_confirm": res_a1})
     elif int(res_1[6]) < 0:
-        res_a1 = "-" + str(res_1[6])
+        res_a1 = "" + str(res_1[6])
         res.update({"add_now_local_confirm": res_a1})
     else:
         pass
@@ -67,7 +67,7 @@ def get_num():
         res_a1 = "+" + str(res_1[7])
         res.update({"add_now_confirm": res_a1})
     elif int(res_1[7]) < 0:
-        res_a1 = "-" + str(res_1[7])
+        res_a1 = "" + str(res_1[7])
         res.update({"add_now_confirm": res_a1})
     else:
         pass
@@ -76,7 +76,7 @@ def get_num():
         res_a1 = "+" + str(res_1[8])
         res.update({"add_total_confirm": res_a1})
     elif int(res_1[8]) < 0:
-        res_a1 = "-" + str(res_1[8])
+        res_a1 = "" + str(res_1[8])
         res.update({"add_total_confirm": res_a1})
     else:
         pass
@@ -85,7 +85,7 @@ def get_num():
         res_a1 = "+" + str(res_1[9])
         res.update({"add_total_no_infect": res_a1})
     elif int(res_1[9]) < 0:
-        res_a1 = "-" + str(res_1[9])
+        res_a1 = "" + str(res_1[9])
         res.update({"add_total_no_infect": res_a1})
     else:
         pass
@@ -94,7 +94,7 @@ def get_num():
         res_a1 = "+" + str(res_1[10])
         res.update({"add_total_imported_case": res_a1})
     elif int(res_1[10]) < 0:
-        res_a1 = "-" + str(res_1[10])
+        res_a1 = "" + str(res_1[10])
         res.update({"add_total_imported_case": res_a1})
     else:
         pass
@@ -103,7 +103,7 @@ def get_num():
         res_a1 = "+" + str(res_1[11])
         res.update({"add_total_dead": res_a1})
     elif int(res_1[11]) < 0:
-        res_a1 = "-" + str(res_1[11])
+        res_a1 = "" + str(res_1[11])
         res.update({"add_total_dead": res_a1})
     else:
         pass
